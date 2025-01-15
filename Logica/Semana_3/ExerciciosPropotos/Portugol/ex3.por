@@ -2,28 +2,39 @@ programa
 {
     funcao inicio()
     {
-        cadeia produtos[100]
-        real valores[100]
+        cadeia produto, lista = ""
+        real valor,valorTotal=0
         inteiro loop = 1, contador = 0
 
         enquanto(loop == 1)
         {
             escreva("Qual o nome do produto\n")
-            leia(produtos[contador])
+            leia(produto)
+            lista += produto + "\n"
+            limpa()
 
             escreva("Qual o valor do produto\n")
-            leia(valores[contador])
+            enquanto(loop == 1){
+            	leia(valor)
+            	se(valor>0){
+            		loop = 0
+            		valorTotal += valor
+            	}senao{
+            		escreva("O valor do produto precisa sim ser maior que 0\nInsira o valor novamente\n")
+            	}
+            }
+            limpa()
 
             escreva("Deseja continuar comprando? 1(sim) 0(não)\n")
             leia(loop)
+            limpa()
 
             contador++
         }
 
-        para(inteiro i = 0; i < contador; i++)
-        {
-            escreva("Produto: ", produtos[i], "\nValor: ", valores[i], "\n\n")
-        }
+            escreva(lista, "\n")
+        
+            escreva("Valor total: ",valorTotal)
     }
 }
 
@@ -32,7 +43,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 621; 
+ * @POSICAO-CURSOR = 849; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
