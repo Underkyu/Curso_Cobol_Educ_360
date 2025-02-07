@@ -1,0 +1,4 @@
+0001CARLOS DE SOUZA      ADMGERENTE   5000
+0002PAULO DE TARSO       RH ANALISTA  3000
+0004LIANA FLORES                           RH Gerente                 4000
+0005ANDRE SOARES                        DTISENIOR                  7000
