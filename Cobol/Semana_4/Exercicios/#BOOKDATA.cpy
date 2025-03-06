@@ -1,0 +1,19 @@
+           05 WRK-ANO PIC 9(04).
+           05 WRK-MES PIC 9(02).
+           05 WRK-DIA PIC 9(02).
+       01 TABELA-MESES.
+           05 FILLER PIC X(09) VALUE "JANEIRO  ".
+           05 FILLER PIC X(09) VALUE "FEVEREIRO".
+           05 FILLER PIC X(09) VALUE "MARCO    ".
+           05 FILLER PIC X(09) VALUE "ABRIL    ".
+           05 FILLER PIC X(09) VALUE "MAIO     ".
+           05 FILLER PIC X(09) VALUE "JUNHO    ".
+           05 FILLER PIC X(09) VALUE "JULHO    ".
+           05 FILLER PIC X(09) VALUE "AGOSTO   ".
+           05 FILLER PIC X(09) VALUE "SETEMBRO ".
+           05 FILLER PIC X(09) VALUE "OUTUBRO  ".
+           05 FILLER PIC X(09) VALUE "NOVEMBRO ".
+           05 FILLER PIC X(09) VALUE "DEZEMBRO ".
+
+       01 TABELAS-DE-MESES-R REDEFINES TABELA-MESES OCCURS 12 TIMES.
+           05 MESES PIC X(09).
