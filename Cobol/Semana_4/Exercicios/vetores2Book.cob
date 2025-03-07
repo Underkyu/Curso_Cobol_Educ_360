@@ -17,12 +17,8 @@
        FILE SECTION.
        WORKING-STORAGE SECTION.
 
-
        01 WRK-DATA.
            COPY "#bookdata".
-
-
-
 
        PROCEDURE DIVISION.
        0001-PRINCIPAL             SECTION.
