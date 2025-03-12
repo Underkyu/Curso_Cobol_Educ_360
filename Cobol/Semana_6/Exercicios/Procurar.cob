@@ -1,7 +1,7 @@
       ******************************************************************
       * Author:
       * Date:
-      * Purpose: Learn about how to read all the registers in an arquive
+      * Purpose: Learn about how to search for a register in an arquive
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
@@ -15,7 +15,7 @@
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
        SELECT CLIENTES ASSIGN TO
-       "C:\Users\GAMER\Curso_Cobol_Educ_360\Cobol\Semana_5\Data\CLI.DAT"
+       "C:\Users\GAMER\Curso_Cobol_Educ_360\Cobol\Semana_6\Data\CLI.DAT"
            FILE STATUS IS FS-CLIENTES.
        DATA DIVISION.
        FILE SECTION.
@@ -28,6 +28,7 @@
        WORKING-STORAGE SECTION.
            77 FS-CLIENTES PIC X(02) VALUE ZEROS.
            77 WRK-MSG-ERRO PIC X(30) VALUE SPACES.
+           77 WRK-ID PIC 9(04) VALUE ZEROS.
        PROCEDURE DIVISION.
        0001-PRINCIPAL             SECTION.
            PERFORM 0100-INICIALIZAR.
@@ -43,16 +44,22 @@
                    MOVE "ARQUIVO NAO FOI ABERTO" TO WRK-MSG-ERRO
                    PERFORM 9000-TRATA-ERRO
            ELSE
-                  CONTINUE.
+                  DISPLAY "Qual o ID do registro desejado".
+                  ACCEPT WRK-ID.
        0200-PROCESSAR             SECTION.
            READ CLIENTES
            IF FS-CLIENTES < 1
             PERFORM UNTIL FS-CLIENTES NOT EQUAL 00
 
+             IF REG-ID EQUALS WRK-ID
              DISPLAY "STATUS: " FS-CLIENTES
              DISPLAY "ID.... " REG-ID
              DISPLAY "NOME.. " REG-NOME
              DISPLAY "TELE.. " REG-TELEFONE
+
+             CLOSE CLIENTES
+             GOBACK
+             END-IF
                READ CLIENTES
            END-PERFORM
            ELSE

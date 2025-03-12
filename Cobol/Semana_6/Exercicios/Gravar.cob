@@ -1,7 +1,7 @@
       ******************************************************************
       * Author:
       * Date:
-      * Purpose: Learn about how to read all the registers in an arquive
+      * Purpose: Learn about how to write in arquives
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
@@ -15,12 +15,12 @@
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
        SELECT CLIENTES ASSIGN TO
-       "C:\Users\GAMER\Curso_Cobol_Educ_360\Cobol\Semana_5\Data\CLI.DAT"
+       "C:\Users\GAMER\Curso_Cobol_Educ_360\Cobol\Semana_6\Data\CLI.DAT"
            FILE STATUS IS FS-CLIENTES.
        DATA DIVISION.
        FILE SECTION.
        FD CLIENTES.
-       01 REF-CLIENTES.
+       01 REG-CLIENTES.
            05 REG-ID        PIC 9(04).
            05 REG-NOME      PIC 9(20).
            05 REG-TELEFONE  PIC 9(11).
@@ -38,26 +38,17 @@
            STOP RUN.
 
        0100-INICIALIZAR           SECTION.
-           OPEN INPUT CLIENTES.
+           OPEN OUTPUT CLIENTES.
            IF FS-CLIENTES EQUAL 35
                    MOVE "ARQUIVO NAO FOI ABERTO" TO WRK-MSG-ERRO
                    PERFORM 9000-TRATA-ERRO
            ELSE
                   CONTINUE.
        0200-PROCESSAR             SECTION.
-           READ CLIENTES
-           IF FS-CLIENTES < 1
-            PERFORM UNTIL FS-CLIENTES NOT EQUAL 00
-
-             DISPLAY "STATUS: " FS-CLIENTES
-             DISPLAY "ID.... " REG-ID
-             DISPLAY "NOME.. " REG-NOME
-             DISPLAY "TELE.. " REG-TELEFONE
-               READ CLIENTES
-           END-PERFORM
-           ELSE
-               DISPLAY "ARQUIVO VAZIO"
-           END-IF.
+           MOVE 0001                   TO REG-ID.
+           MOVE 'Flower              ' TO REG-NOME.
+           MOVE '11979797373'          TO REG-TELEFONE.
+           WRITE REG-CLIENTES.
        0300-FINALIZAR             SECTION.
            DISPLAY "FIM PROGRAMA".
            CLOSE CLIENTES.
